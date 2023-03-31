@@ -1,0 +1,111 @@
+import { createBrowserRouter } from "react-router-dom";
+import AuthLayout from "./layout/AuthLayout";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import OrderMenu from "./pages/OrderMenu";
+import OrderStore from "./pages/OrderStore";
+import Cart from "./pages/Cart";
+import Confirmation from "./pages/Confirmation";
+import Recipe from "./pages/Recipe";
+import MyRecipe from "./pages/MyRecipe";
+import NewRecipe from "./pages/NewRecipe";
+import RecipeShare from "./pages/RecipeShare";
+import App from "./App";
+import NotFound from "./pages/NotFound";
+
+const routerData = [
+  {
+    id: 0,
+    path: "/",
+    label: "Home",
+    element: <Home />,
+    withAuth: false,
+  },
+  {
+    id: 1,
+    path: "/login",
+    label: "로그인",
+    element: <Login />,
+    withAuth: false,
+  },
+  {
+    id: 2,
+    path: "/order-menu",
+    label: "메뉴 선택",
+    element: <OrderMenu />,
+    withAuth: true,
+  },
+  {
+    id: 3,
+    path: "/order-store",
+    label: "매장 선택",
+    element: <OrderStore />,
+    withAuth: true,
+  },
+  {
+    id: 4,
+    path: "/cart",
+    label: "장바구니",
+    element: <Cart />,
+    withAuth: true,
+  },
+  {
+    id: 5,
+    path: "/confirmation",
+    label: "주문 완료",
+    element: <Confirmation />,
+    withAuth: true,
+  },
+  {
+    id: 6,
+    path: "/recipe",
+    label: "레시피",
+    element: <Recipe />,
+    withAuth: false,
+  },
+  {
+    id: 7,
+    path: "/my-recipe",
+    label: "나의 레시피",
+    element: <MyRecipe />,
+    withAuth: true,
+  },
+  {
+    id: 8,
+    path: "/new-recipe",
+    label: "새 레시피",
+    element: <NewRecipe />,
+    withAuth: false,
+  },
+  {
+    id: 9,
+    path: "/recipe-share",
+    label: "레시피 공유",
+    element: <RecipeShare />,
+    withAuth: false,
+  },
+  // 상세 레시피 id?
+  // 회원가입
+  // 마이페이지
+];
+
+export const routers = createBrowserRouter([
+  {
+    path: "/",
+    element: <App />,
+    errorElement: <NotFound />,
+    children: routerData.map((router) => {
+      if (router.withAuth) {
+        return {
+          path: router.path,
+          element: <AuthLayout>{router.element}</AuthLayout>,
+        };
+      } else {
+        return {
+          path: router.path,
+          element: router.element,
+        };
+      }
+    }),
+  },
+]);
