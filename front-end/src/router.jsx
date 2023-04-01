@@ -84,7 +84,7 @@ const routerData = [
     element: <RecipeShare />,
     withAuth: false,
   },
-  // 상세 레시피 id?
+  // 상세 레시피 id? - 저장 버튼 누를 때 로그인 필요
   // 회원가입
   // 마이페이지
 ];
