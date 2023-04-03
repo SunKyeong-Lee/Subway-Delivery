@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import AuthLayout from "./layout/AuthLayout";
 import Home from "./pages/Home";
+import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import OrderMenu from "./pages/OrderMenu";
 import OrderStore from "./pages/OrderStore";
@@ -23,62 +24,69 @@ const routerData = [
   },
   {
     id: 1,
+    path: "/signup",
+    label: "회원가입",
+    element: <SignUp />,
+    withAuth: false,
+  },
+  {
+    id: 2,
     path: "/login",
     label: "로그인",
     element: <Login />,
     withAuth: false,
   },
   {
-    id: 2,
+    id: 3,
     path: "/order-menu",
     label: "메뉴 선택",
     element: <OrderMenu />,
     withAuth: true,
   },
   {
-    id: 3,
+    id: 4,
     path: "/order-store",
     label: "매장 선택",
     element: <OrderStore />,
     withAuth: true,
   },
   {
-    id: 4,
+    id: 5,
     path: "/cart",
     label: "장바구니",
     element: <Cart />,
     withAuth: true,
   },
   {
-    id: 5,
+    id: 6,
     path: "/confirmation",
     label: "주문 완료",
     element: <Confirmation />,
     withAuth: true,
   },
   {
-    id: 6,
+    id: 7,
     path: "/recipe",
     label: "레시피",
     element: <Recipe />,
     withAuth: false,
   },
   {
-    id: 7,
+    id: 8,
     path: "/my-recipe",
     label: "나의 레시피",
     element: <MyRecipe />,
     withAuth: true,
   },
   {
-    id: 8,
+    id: 9,
     path: "/new-recipe",
     label: "새 레시피",
     element: <NewRecipe />,
     withAuth: false,
   },
   {
-    id: 9,
+    id: 10,
     path: "/recipe-share",
     label: "레시피 공유",
     element: <RecipeShare />,

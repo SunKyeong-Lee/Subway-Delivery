@@ -1,5 +1,8 @@
+import { useState } from "react";
+
 const AuthLayout = ({ children }) => {
   // 로그인 체크
+  const [userProfile, setUserProfile] = useState();
 
   return (
     <div>
