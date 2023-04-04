@@ -11,6 +11,7 @@ import Recipe from "./pages/Recipe";
 import MyRecipe from "./pages/MyRecipe";
 import NewRecipe from "./pages/NewRecipe";
 import RecipeShare from "./pages/RecipeShare";
+import NicknameForm from "./pages/NicknameForm";
 import App from "./App";
 import NotFound from "./pages/NotFound";
 
@@ -91,6 +92,14 @@ const routerData = [
     label: "레시피 공유",
     element: <RecipeShare />,
     withAuth: false,
+  },
+
+  {
+    id: 11,
+    path: "/nickname-form",
+    label: "닉네임 입력",
+    element: <NicknameForm />,
+    withAuth: true,
   },
   // 상세 레시피 id? - 저장 버튼 누를 때 로그인 필요
   // 회원가입
