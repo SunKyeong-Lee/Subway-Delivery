@@ -6,22 +6,30 @@ import {
 } from "firebase/auth";
 
 /** 이메일 로그인 */
-export const loginWithEmail = (email, password) => {
+export const loginWithEmail = async (email, password) => {
   const auth = getAuth();
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
-      // ...
-      console.log("로그인 성공");
-      console.log(user);
-      return user;
+
+  return signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      return "success";
     })
     .catch((error) => {
       const errorCode = error.code;
-      const errorMessage = error.message;
-      // ..
-      // console.log(errorCode, errorMessage);
+      let errorMessage = null;
+
+      if (errorCode === "auth/user-not-found") {
+        errorMessage = "해당 이메일을 사용하는 사용자를 찾을 수 없습니다.";
+      } else if (errorCode === "auth/invalid-email" || "auth/wrong-password") {
+        errorMessage = "이메일 혹은 비밀번호를 확인해주세요.";
+      } else if (errorCode === "auth/too-many-requests") {
+        errorMessage =
+          "비정상적인 활동으로 인해 계정이 일시적으로 차단되었습니다. \n문의하기를 이용해주세요.";
+      } else {
+        errorMessage =
+          "문제가 발생했습니다. 다시 시도해주세요. \n계속해서 문제가 발생할 경우 문의하기를 이용해주세요.";
+      }
+
+      return errorMessage;
     });
 };
 
@@ -30,8 +38,7 @@ export const getCurrentUserInfo = () => {
   const auth = getAuth();
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, see docs for a list of available properties
-      const uid = user.uid;
+      // User is signed in
       // ...
     } else {
       // User is signed out

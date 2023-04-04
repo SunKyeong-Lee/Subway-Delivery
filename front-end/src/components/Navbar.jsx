@@ -4,35 +4,44 @@ import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { logout } from "../api/login";
 
-const Navbar = () => {
-  const navigate = useNavigate();
-
-  // 로그인 페이지일 때 버튼 안보이게 하기
+const Navbar = ({ isDisplayed }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const auth = getAuth();
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/firebase.User
+        const uid = user.uid;
+        // ...
+        setUser(user);
+      } else {
+        // User is signed out
+        // ...
+        setUser(null);
+      }
     });
     return unsubscribe;
-  }, []);
+  }, [user]);
 
   return (
     <nav>
       <h1 onClick={() => navigate("/")}>SUBWAY</h1>
-      {user === null ? (
-        <button onClick={() => navigate("/login")}>로그인</button>
-      ) : (
-        <>
-          <button onClick={() => navigate("/cart")}>장바구니</button>
-          <p>어서오세요 {user.email}님</p>
-        </>
+      {isDisplayed && (
+        <div>
+          {user === null ? (
+            <button onClick={() => navigate("/login")}>로그인</button>
+          ) : (
+            <>
+              <button onClick={() => navigate("/cart")}>장바구니</button>
+              <button onClick={() => logout()}>로그아웃</button>
+            </>
+          )}
+        </div>
       )}
-      {/* <button onClick={() => navigate("/cart")}>장바구니</button>
-      <button onClick={() => navigate("/login")}>로그인</button> */}
-      <button onClick={() => logout()}>로그아웃</button>
+      <hr />
     </nav>
   );
 };
