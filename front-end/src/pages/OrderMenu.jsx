@@ -18,7 +18,7 @@ const OrderMenu = () => {
         <li>메뉴2</li>
         <li>메뉴3</li>
       </ul>
-      <button onClick={() => navigate(-1)}>취소</button>
+      <button onClick={() => navigate("/")}>취소</button>
       <button onClick={() => navigate("/order-store")}>매장 선택하기</button>
     </div>
   );

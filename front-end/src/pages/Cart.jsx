@@ -9,9 +9,9 @@ const Cart = () => {
       <p>메뉴</p>
       <p>배송비</p>
       <p>주소지, 상세주소</p>
-      <p>배송 요청 사항</p>
+      <p>배송 요청 사항 - 수정버튼</p>
       <p>결제 금액</p>
-      <button onClick={() => navigate(-1)}>취소</button>
+      <button onClick={() => navigate("/")}>취소</button>
       <button>주문하기</button>
     </div>
   );

@@ -12,7 +12,7 @@ const OrderStore = () => {
         <li>매장3</li>
       </ul>
 
-      <button onClick={() => navigate(-1)}>취소</button>
+      <button onClick={() => navigate("/")}>취소</button>
       <button onClick={() => navigate("/cart")}>장바구니</button>
     </div>
   );
