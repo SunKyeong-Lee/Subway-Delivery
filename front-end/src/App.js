@@ -16,8 +16,8 @@ function App() {
 
   return (
     <>
-      <Navbar isDisplayed={isDisplayed} />
-      <Outlet />
+      <Navbar isDisplayed={isDisplayed}/>
+      <Outlet/>
     </>
   );
 }

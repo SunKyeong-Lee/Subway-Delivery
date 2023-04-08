@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router-dom";
-import { loginWithEmail } from "../api/login";
+import { loginWithEmail, loginWithGoogle } from "../api/auth";
 import { useState } from "react";
 
 const Login = () => {
   const [isDisplayed, setIsDisplayed] = useState(false);
-  const [message, setMessage] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const navigate = useNavigate();
 
   const emailLoginSubmit = async (e) => {
@@ -16,12 +16,20 @@ const Login = () => {
       formData.get("id"),
       formData.get("password")
     );
-    
+
     if (loginResult === "success") {
       navigate("/");
     } else {
       setIsDisplayed(true);
-      setMessage(loginResult);
+      setErrorMessage(loginResult);
+    }
+  };
+
+  const googleLoginHandler = async () => {
+    const loginResult = await loginWithGoogle();
+
+    if (loginResult === "success") {
+      navigate("/");
     }
   };
 
@@ -33,13 +41,13 @@ const Login = () => {
         <input type="password" name="password" placeholder="비밀번호" />
         <button type="submit">로그인</button>
       </form>
-      {isDisplayed && <div>{message}</div>}
+      {isDisplayed && <div>{errorMessage}</div>}
       <div>
         <button>비밀번호 찾기</button>
         <button onClick={() => navigate("/signup")}>회원가입</button>
       </div>
 
-      <button>Google로 로그인</button>
+      <button onClick={googleLoginHandler}>Google로 로그인</button>
     </div>
   );
 };
