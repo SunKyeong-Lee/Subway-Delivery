@@ -3,12 +3,19 @@ import ReactDOM from "react-dom/client";
 import reportWebVitals from "./reportWebVitals";
 import { RouterProvider } from "react-router-dom";
 import { routers } from "./router";
-import "./api/firebase"
+import "./api/firebase";
+import "./styles/font.css";
+import GlobalStyle from "./styles/GlobalStyle";
+import { ThemeProvider } from "styled-components";
+import theme from "./styles/theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={routers} />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <RouterProvider router={routers} />
+    </ThemeProvider>
   </React.StrictMode>
 );
 

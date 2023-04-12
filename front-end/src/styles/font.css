@@ -1,0 +1,48 @@
+/* Noto Sans KR (korean) http://www.google.com/fonts/earlyaccess */
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 400;
+  src: local("NotoSansKR"),
+    url(../assets/fonts/NotoSansKR-Regular.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Regular.woff) format("woff"),
+    url(../assets/fonts/NotoSansKR-Regular.otf) format("opentype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 500;
+  src: local("NotoSansKR"),
+    url(../assets/fonts/NotoSansKR-Medium.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Medium.woff) format("woff"),
+    url(../assets/fonts/NotoSansKR-Medium.otf) format("opentype");
+}
+@font-face {
+  font-family: "Noto Sans KR";
+  font-style: normal;
+  font-weight: 700;
+  src: local("NotoSansKR"),
+    url(../assets/fonts/NotoSansKR-Bold.woff2) format("woff2"),
+    url(../assets/fonts/NotoSansKR-Bold.woff) format("woff"),
+    url(../assets/fonts/NotoSansKR-Bold.otf) format("opentype");
+}
+
+/* SB 어그로 https://sandbox.co.kr/font */
+@font-face {
+  font-family: "SB 어그로";
+  font-style: normal;
+  font-weight: 300;
+  src: local("SB 어그로"), url(../assets/fonts/SB어그로L.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SB 어그로";
+  font-style: normal;
+  font-weight: 500;
+  src: local("SB 어그로"), url(../assets/fonts/SB어그로M.ttf) format("truetype");
+}
+@font-face {
+  font-family: "SB 어그로";
+  font-style: normal;
+  font-weight: 700;
+  src: local("SB 어그로"), url(../assets/fonts/SB어그로B.ttf) format("truetype");
+}
